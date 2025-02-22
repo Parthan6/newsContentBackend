@@ -47,7 +47,7 @@ def get_news():
     return jsonify(news_data)
 
 
-@app.route('/summarize', methods=['GET'])
+@app.route('/summarize', methods=['POST'])
 def summarize_news():
     try:
         data = request.json
