@@ -3,10 +3,13 @@ import requests
 from bs4 import BeautifulSoup
 import nltk
 from newspaper import Article
+from flask_cors import CORS
 
 nltk.download('punkt')
 
 app = Flask(__name__)
+
+CORS(app)
 
 
 def fetch_todays_news():
@@ -47,7 +50,7 @@ def get_news():
     return jsonify(news_data)
 
 
-@app.route('/summarize', methods=['GET'])
+@app.route('/summarize', methods=['POST'])
 def summarize_news():
     try:
         data = request.json
