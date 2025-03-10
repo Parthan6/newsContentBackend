@@ -57,10 +57,10 @@ def get_news():
     return jsonify(news_data)
 
 
-@app.route('/summarize', methods=['GET'])
-def summarize_news():
+
+def summarize_news(url):
     try:
-        url = request.args.get('url')
+        
         #url = data.get('url')
         if not url:
             return jsonify({'error': 'URL is required'}), 400
@@ -75,6 +75,12 @@ def summarize_news():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+@app.route('/summarize', methods=['GET'])
+def summary():
+    url = request.args.get('url')
+    content = summarize_news(url)
+    return content
 
 
 
