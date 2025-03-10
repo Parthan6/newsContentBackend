@@ -4,12 +4,19 @@ from bs4 import BeautifulSoup
 import nltk
 from newspaper import Article
 from flask_cors import CORS
+from pymongo import MongoClient
+from datetime import datetime
+import schedule
+import time
+import threading
 
 nltk.download('punkt')
 
 app = Flask(__name__)
 
 CORS(app)
+
+
 
 
 def fetch_todays_news():
