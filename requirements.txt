@@ -9,4 +9,3 @@ flask_cors
 pymongo
 datetime
 schedule
-threading
