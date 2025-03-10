@@ -125,8 +125,11 @@ def store_news():
 @app.route('/fetch_stored_news', methods=['GET'])
 def get_stored_news():
     """Retrieve stored news from MongoDB."""
-    today = datetime.today().strftime('%Y-%m-%d')
-    news_data = collection.find_one({"date": today}, {"_id": 0})
+    # today = datetime.today().strftime('%Y-%m-%d')
+    # news_data = collection.find_one({"date": today}, {"_id": 0})
+
+    date = request.args.get('date', datetime.today().strftime('%Y-%m-%d'))  # Get date from request or default to today
+    news_data = collection.find_one({"date": date}, {"_id": 0})
 
     if news_data:
         return jsonify(news_data)
@@ -137,7 +140,7 @@ def get_stored_news():
 
 
 # Schedule daily news storage at 6:00 AM
-schedule.every().day.at("14:59").do(store_news)
+schedule.every().day.at("06:00").do(store_news)
 
 def run_scheduler():
     """Run scheduled task in a separate thread."""
