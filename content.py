@@ -57,11 +57,11 @@ def get_news():
     return jsonify(news_data)
 
 
-@app.route('/summarize', methods=['POST'])
+@app.route('/summarize', methods=['GET'])
 def summarize_news():
     try:
-        data = request.json
-        url = data.get('url')
+        url = request.args.get('url')
+        #url = data.get('url')
         if not url:
             return jsonify({'error': 'URL is required'}), 400
 
