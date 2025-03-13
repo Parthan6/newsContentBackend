@@ -9,4 +9,3 @@ flask_cors
 pymongo
 datetime
 schedule
-RUN python -c "import nltk; nltk.download('punkt')"

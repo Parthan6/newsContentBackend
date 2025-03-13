@@ -1,10 +1,16 @@
 from flask import Flask, request, jsonify
 import requests
 import nltk
+import os
 from newspaper import Article
 from flask_cors import CORS
 
-nltk.download('punkt')
+#nltk.download('punkt')
+
+NLTK_DATA_PATH = "/opt/render/project/src/nltk_data"
+os.makedirs(NLTK_DATA_PATH, exist_ok=True)  # Ensure directory exists
+nltk.data.path.append(NLTK_DATA_PATH)  # Add it to NLTK's search path
+nltk.download('punkt', download_dir=NLTK_DATA_PATH)  # Download to custom directory
 
 app = Flask(__name__)
 
