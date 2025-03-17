@@ -121,6 +121,12 @@ def store_news():
 
 
 
+@app.route('/trigger_store_news', methods=['POST'])
+def trigger_store_news():
+    store_news()
+    return jsonify({"message": "News stored successfully."}), 200
+
+
 
 @app.route('/fetch_stored_news', methods=['GET'])
 def get_stored_news():
@@ -140,16 +146,17 @@ def get_stored_news():
 
 
 # Schedule daily news storage at 6:00 AM
-schedule.every().day.at("21:10").do(store_news)
+#schedule.every().day.at("20:46").do(store_news)
 
-def run_scheduler():
-    """Run scheduled task in a separate thread."""
-    while True:
-        schedule.run_pending()
-        time.sleep(60)
+#def run_scheduler():
+ #   """Run scheduled task in a separate thread."""
+  
+#  while True:
+#        schedule.run_pending()
+ #       time.sleep(60)
 
 # Start scheduler in a background thread
-threading.Thread(target=run_scheduler, daemon=True).start()
+#threading.Thread(target=run_scheduler, daemon=True).start()
 
 
 
