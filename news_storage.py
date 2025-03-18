@@ -112,11 +112,11 @@ def store_news():
                 "indian_news": indian_news,
                 "international_news": international_news
             })
-            print("✅ Today's news stored successfully in MongoDB.")
-        else:
-            print("⚠️ No news found for today.")
-    else:
-        print("⚠️ News for today already exists in MongoDB.")
+            #print("✅ Today's news stored successfully in MongoDB.")
+        #else:
+            #print("⚠️ No news found for today.")
+    #else:
+       # print("⚠️ News for today already exists in MongoDB.")
 
 
 
