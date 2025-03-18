@@ -121,7 +121,7 @@ def store_news():
 
 
 
-@app.route('/trigger_store_news', methods=['POST'])
+@app.route('/trigger_store_news', methods=['GET','POST'])
 def trigger_store_news():
     store_news()
     return jsonify({"message": "News stored successfully."}), 200
