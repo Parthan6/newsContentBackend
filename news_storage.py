@@ -123,9 +123,14 @@ def store_news():
 
 @app.route('/trigger_store_news', methods=['GET'])
 def trigger_store_news():
-    store_news()
-    return jsonify({"message": "News stored successfully."}), 200
+    try:
+        store_news()
+        return jsonify({"message": "News stored successfully."}), 200
 
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    #store_news()
+    
 
 
 @app.route('/fetch_stored_news', methods=['GET'])
