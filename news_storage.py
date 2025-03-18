@@ -123,13 +123,14 @@ def store_news():
 
 @app.route('/trigger_store_news', methods=['GET'])
 def trigger_store_news():
-    try:
-        store_news()
-        return jsonify({"message": "News stored successfully."}), 200
+    def background_task():
+        try:
+            store_news()
+        except Exception as e:
+            print("Error:", e)
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-    #store_news()
+    threading.Thread(target=background_task).start()
+    return jsonify({"message": "News storing task started."}), 200
     
 
 
