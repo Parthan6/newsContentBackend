@@ -125,7 +125,7 @@ def store_news():
 def trigger_store_news():
     try:
         store_news()
-        return jsonify({"message": "News stored successfully."}), 200
+        return jsonify({"message": "stored"}), 200
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -151,17 +151,17 @@ def get_stored_news():
 
 
 # Schedule daily news storage at 6:00 AM
-schedule.every().day.at("15:41").do(store_news)
+#schedule.every().day.at("08:29").do(store_news)
 
-def run_scheduler():
+d#ef run_scheduler():
  #   """Run scheduled task in a separate thread."""
   
-  while True:
-       schedule.run_pending()
-       time.sleep(60)
+#  while True:
+#       schedule.run_pending()
+#       time.sleep(60)
 
 # Start scheduler in a background thread
-threading.Thread(target=run_scheduler, daemon=True).start()
+#threading.Thread(target=run_scheduler, daemon=True).start()
 
 
 
