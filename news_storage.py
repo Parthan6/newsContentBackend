@@ -97,8 +97,9 @@ def summarize_content(url):
         article.parse()
         article.nlp()
         return article.summary
-    except:
-        return "Failed to summarize."
+    except Exception as e:
+        return f"Error summarizing: {str(e)}"
+
 
 
 
