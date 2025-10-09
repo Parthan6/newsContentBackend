@@ -130,7 +130,7 @@ def store_news():
 
 
 
-@app.route('/trigger_store_news', methods=['GET'])
+@app.route('/trigger_store_news', methods=['HEAD'])
 def trigger_store_news():
     try:
         store_news()
