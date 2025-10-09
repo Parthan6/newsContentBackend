@@ -52,6 +52,11 @@ def summary():
     content = summarize_news(url)
     return content
 
+@app.route("/ping", methods=["GET"])
+def ping():
+    # Very small and fast response for uptime checks
+    return "OK", 200
+
 
 
 if __name__ == '__main__':
